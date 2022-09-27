@@ -26,6 +26,8 @@ router.delete('/logout', (req : Request, res : Response) => {
     res.sendStatus(204)
 })
 
+
+
 router.post('/login', (req : Request, res : Response) => {
 
     const username = req.body.username
@@ -38,8 +40,11 @@ router.post('/login', (req : Request, res : Response) => {
 })
 
 function generateAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30s'})
+    // return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30s'})
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
 }
+
+router.post('/users/login', authController.login)
 
 
 module.exports = router
