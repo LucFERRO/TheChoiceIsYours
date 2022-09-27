@@ -8,22 +8,34 @@ import { User } from '../types/types'
 
 const router = Router();
 
-//A GERER
-// const users = [
-//     {
-//         "username": "Test",
-//         "password": "1234",
-//         "firstname": "Test",
-//         "lastname": "Ttttest",
-//         "date_of_birth": "01-01-2005",
-//         "email": "test@ttes.fr"
-//     }
-// ]
+// Users
 
 
+/**
+ * @swagger
+ * tags:
+ *      name: Users
+ *      description: Manage users
+ */
 
+/**
+ * @swagger
+ * /users:
+ *  get:
+ *      tags: [Users]
+ *      description: Request all users
+ *      summary: 
+ */
 router.get('/', userController.getUsers)
 
+/**
+ * @swagger
+ * /users:
+ *  post:
+ *      tags: [Users]
+ *      description: Add a user
+ *      summary: 
+ */
 router.post('/', userController.postUser)
 
 

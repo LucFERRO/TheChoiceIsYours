@@ -5,29 +5,29 @@ const { Router } = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-// const swaggerJsDoc = require('swagger-jsdoc')
-// const swaggerUi = require('swagger-ui-express')
+const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express')
 
-// const swaggerOptions = {
-//     swaggerDefinition: {
-//         info: {
-//             title: 'API',
-//             description: '',
-//             contact: {
-//                 name: 'Best front-end dev EUW'
-//             },
-//             // servers: [{ url: '/api' }]
-//             servers: [{
-//                 url:`http://localhost:3000`,
-//                 description: 'localhost'
-//             },],
-//         },
-//     },
-//     apis: [`./routes/*.js`]
-// }
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: 'API',
+            description: '',
+            contact: {
+                name: 'Best front-end dev EUW'
+            },
+            // servers: [{ url: '/api' }]
+            servers: [{
+                url:`http://localhost:3000`,
+                description: 'localhost'
+            },],
+        },
+    },
+    apis: [`./routes/*.ts`]
+}
 
-// const swaggerDocs = swaggerJsDoc(swaggerOptions)
-// app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+const swaggerDocs = swaggerJsDoc(swaggerOptions)
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 const userController = require('./controller/userController')
 const userRoutes = require('./routes/userRoutes')
