@@ -21,7 +21,7 @@ const posts = [
 const users = []
 
 app.get('/posts', authenticateToken, (req,res) => {
-    res.json(posts.filter(post => post.username === req.user.name))
+    res.json(posts.filter(post => post.username === req.user.username))
 })
 
 app.get('/users', (req,res) => {
@@ -32,7 +32,7 @@ app.post('/users', async (req,res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         console.log(hashedPassword)
-        const user = {name:req.body.name, password: hashedPassword}
+        const user = {name:req.body.username, password: hashedPassword}
         users.push(user)
         res.status(201).send('User created')
     } catch {
@@ -41,7 +41,7 @@ app.post('/users', async (req,res) => {
 })
 
 app.post('/users/login', async (req,res) => {
-    const user = users.find(user => user.name == req.body.name)
+    const user = users.find(user => user.username == req.body.username)
     if (user == null) {
         return res.status(400).send('Cannot find user')
     }

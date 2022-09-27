@@ -1,24 +1,20 @@
+export interface User {
+    username: string;
+    password: string;
+}
 
-import { Response, NextFunction } from 'express'
+interface Body {
+    username: string;
+    password: string;
+    token: string;
+}
 
 declare global {
     namespace Express {
       interface Request {
         headers?: Headers;
-        user?: Users;
         body?: Body;
+        user?: User;
       }
     }
   }
-
-interface Users{
-    name: string;
-    username: string;
-    password: string;
-}
-interface Body{
-    name: string;
-    username: string;
-    password: string;
-    token: string;
-}

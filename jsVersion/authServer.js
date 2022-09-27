@@ -23,7 +23,7 @@ const users = []
 
 
 app.post('/users/login', async (req,res) => {
-    const user = users.find(user => user.name == req.body.name)
+    const user = users.find(user => user.username == req.body.username)
     if (user == null) {
         return res.status(400).send('Cannot find user')
     }
@@ -46,7 +46,7 @@ app.post('/token', (req, res) => {
     if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) return res.sendStatus(403)
-        const accessToken = generateAccessToken({name: user.name})
+        const accessToken = generateAccessToken({name: user.username})
         res.json({accessToken: accessToken})
     })
 })
