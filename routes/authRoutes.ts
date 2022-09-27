@@ -20,6 +20,46 @@ let refreshTokens = []
  *      description: Manage authentification
  */
 
+ const posts = [
+    {
+        username: 'Luc',
+        title: 'test1'
+    },
+    {
+        username: 'Gaetan',
+        title: 'J"adore le CSS'
+    },
+    {
+        username: 'Luc2',
+        title: 'test2'
+    }
+]
+
+/**
+ * @swagger
+ * /posts:
+ *  get:
+ *      tags: [Authentification]
+ *      description: Get posts of currently logged in user
+ *      summary: 
+ */
+router.get('/posts', authenticateToken, (req : Request,res : Response) => {
+    res.json(posts.filter(post => post.username === req.user.username))
+})
+
+function authenticateToken(req : Request, res : Response, next : NextFunction) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null) return res.status(401).send('No token given')
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) return res.status(403).send('Not logged in')
+        req.user = user
+        next()
+    })
+}
+
+
 /**
  * @swagger
  * /token:
