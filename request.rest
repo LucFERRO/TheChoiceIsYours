@@ -1,0 +1,137 @@
+GET http://localhost:3000/posts
+
+###
+
+GET http://localhost:3000/users
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Gaetanxwcfsdvdsxgsdxg",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "name": "Gaetan",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:3000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVjIiwiaWF0IjoxNjY0MTkyODYwfQ.NyjQ36MGrq6H7NWRobtxpzyiQHHpkWRaxUM9X0drkR8"
+}
+
+###
+
+DELETE http://localhost:3000/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVjIiwiaWF0IjoxNjY0MTkyODYwfQ.NyjQ36MGrq6H7NWRobtxpzyiQHHpkWRaxUM9X0drkR8"
+}
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "Gaetan"
+}
+
+###
+
+GET http://localhost:3000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2FldGFuIiwiaWF0IjoxNjY0MTk4MDAwLCJleHAiOjE2NjQxOTgwMTV9.tqZSFxRfdvii7VdtCRVdIo35s4__NW4j1B8QBG1JFJc
+
+###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////// Avant TS
+
+GET http://localhost:3000/posts
+
+###
+
+GET http://localhost:3000/users
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Gaetan",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "name": "Gaetan",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:4000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVjIiwiaWF0IjoxNjY0MTkyODYwfQ.NyjQ36MGrq6H7NWRobtxpzyiQHHpkWRaxUM9X0drkR8"
+}
+
+###
+
+DELETE http://localhost:4000/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVjIiwiaWF0IjoxNjY0MTkyODYwfQ.NyjQ36MGrq6H7NWRobtxpzyiQHHpkWRaxUM9X0drkR8"
+}
+
+###
+
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "username": "Gaetan"
+}
+
+###
+
+GET http://localhost:3000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2FldGFuIiwiaWF0IjoxNjY0MTk3MzY3LCJleHAiOjE2NjQxOTczODJ9.WH8Wd3hT1orl1PsRHqKmesor8Rts_uBbfsFyQ3_Oqao
+
+###
