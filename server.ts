@@ -34,7 +34,12 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions)
 
 app.use(express.json())
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+app.get('/', (req, res) => {
+    // res.render('index')
+    res.send('Swagger: /api/v1/docs');
+})
+
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 app.use('/users', userRoutes)
 app.use('/auth', authRoutes)
 
