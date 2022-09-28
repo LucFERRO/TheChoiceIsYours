@@ -30,6 +30,16 @@ router.get('/', userController.getUsers)
 
 /**
  * @swagger
+ * /users/{id}:
+ *  get:
+ *      tags: [Users]
+ *      description: Request user of given id
+ *      summary: 
+ */
+ router.get('/:id', userController.getUserById)
+
+/**
+ * @swagger
  * /users:
  *  post:
  *      tags: [Users]

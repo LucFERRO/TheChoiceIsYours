@@ -11,6 +11,21 @@ const getUsers = (req : Request, res : Response) => {
     })
 }
 
+const getUserById = (req : Request, res : Response) => {
+    const id = Number(req.params.id)
+    pool.query(queries.getUserById, [id], (error:ErrorRequestHandler, result:any) => {
+        try {
+            // if(!Number.isInteger(id)) throw new BadRequestException("ID non trouvé")
+            // const noTemplateFound = !result.rows.length
+            // if(noTemplateFound) throw new NotFoundException("Impossible de lire un ID inexistant")
+            if (error) throw error
+            res.status(200).json(result.rows)
+        } catch (error) {
+            res.send(error)
+        }
+    })
+}
+
 const postUser = async (req : Request, res : Response) => {
     try {
         const { username, firstname, lastname, date_of_birth, email, profile_picture } = req.body
@@ -61,5 +76,6 @@ const postUser = async (req : Request, res : Response) => {
 
 module.exports = {
     getUsers,
+    getUserById,
     postUser,
 }

@@ -1,8 +1,10 @@
 require('dotenv').config()
 
+const cors = require('cors')
 const express = require('express')
 const { Router } = require('express')
 const app = express()
+
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 
@@ -32,6 +34,7 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
 
+app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
